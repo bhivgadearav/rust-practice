@@ -1,16 +1,16 @@
-enum Item {
-    Cons(u32, Box<Item>),
+enum LinkedList {
+    Cons(u32, Box<LinkedList>),
     Nil,
 }
 
-use crate::Item::*;
+use crate::LinkedList::*;
 
-impl Item {
-    fn new() -> Item {
+impl LinkedList {
+    fn new() -> LinkedList {
         Nil
     }
 
-    fn prepend(self, val: u32) -> Item {
+    fn prepend(self, val: u32) -> LinkedList {
         Cons(val, Box::new(self))
     }
 
@@ -34,7 +34,7 @@ impl Item {
 }
 
 fn main() {
-    let mut list = Item::new();
+    let mut list = LinkedList::new();
     list = list.prepend(10);
     list = list.prepend(20);
     list = list.prepend(30);
